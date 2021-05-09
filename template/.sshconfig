@@ -1,0 +1,11 @@
+# 踏み台経由のconfig例
+
+Host bastion
+  HostName <REPLACE_YOUR_BASTION_IP>
+  Port <REPLACE_YOUR_PORT>
+  User isucon
+
+Host server1
+  ProxyJump isucon-bastion
+  HostName <REPLACE_YOUR_SERVER1_IP>
+  User isucon
