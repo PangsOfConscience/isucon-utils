@@ -1,5 +1,23 @@
 # isucon-utils
 
+## Usage
+
+ローカルPC
+
+```shell
+git clone https://github.com/44smkn/isucon-utils.git
+cd isucon-utils/client
+./init.sh -b 1.1.1.1 -s "2.2.2.2 3.3.3.3 4.4.4.4" -p 5032
+```
+
+サーバ
+
+```shell
+git clone https://github.com/44smkn/isucon-utils.git
+cd isucon-utils/server
+sh init.sh
+```
+
 ## 事前準備
 
 * レギュレーションを読む
