@@ -9,6 +9,7 @@ install_alp() {
     unzip alp.zip
     rm -f alp.zip
     sudo install -o root -g root -m 0755 alp /usr/local/bin/alp
+    alp --version && echo "Success Install alp 🎉"
 }
 
 install_with_pkgsys() {
@@ -29,18 +30,42 @@ install_with_pkgsys() {
 # https://www.percona.com/doc/percona-toolkit/3.0/installation.html
 install_pt_query_digest() {
     install_with_pkgsys percona-toolkit
+    pt-query-digest --version && echo "Success Install pt-query-digest 🎉"
 }
 
 # https://blog.zoe.tools/entry/2020/07/26/181836
 # pprofの依存ライブラリ
 install_graphviz() {
     install_with_pkgsys graphviz
+    dot -V && echo "Success Install graphviz 🎉"
+}
+
+change_nginx_logformat() {
+    sudo echo 'log_format ltsv "time:$time_local"
+                "\thost:$remote_addr"
+                "\tforwardedfor:$http_x_forwarded_for"
+                "\treq:$request"
+                "\tstatus:$status"
+                "\tmethod:$request_method"
+                "\turi:$request_uri"
+                "\tsize:$body_bytes_sent"
+                "\treferer:$http_referer"
+                "\tua:$http_user_agent"
+                "\treqtime:$request_time"
+                "\tcache:$upstream_http_x_cache"
+                "\truntime:$upstream_http_x_runtime"
+                "\tapptime:$upstream_response_time"
+                "\tvhost:$host";
+access_log /var/log/nginx/access.log ltsv;' >/etc/nginx/conf.d/log_format.conf
+    chmod 744 /etc/nginx/conf.d/log_format.conf
+    echo "/etc/nginx/conf.d/log_format.conf has been created!"
 }
 
 main() {
     install_alp
     install_pt_query_digest
     install_graphviz
+    change_nginx_logformat
 }
 
 main "$@"
