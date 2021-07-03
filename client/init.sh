@@ -36,7 +36,7 @@ main() {
             bastion=$OPTARG
             ;;
         s)
-            servers=$OPTARG
+            servers=($OPTARG)
             ;;
         p)
             port=$OPTARG
@@ -50,8 +50,8 @@ main() {
         esac
     done
 
-    echo "$servers"
-    if [ -z "$servers" ]; then
+    echo "${servers[@]}"
+    if [ -z "${servers[@]}" ]; then
         echo_err "You must specify -s option!"
         usage_exit
     fi
@@ -64,7 +64,11 @@ main() {
     fi
 
     # TODO: 他項目のsedも追加する
-    cat $template | sed -e 's|<REPLACE_YOUR_BASTION_IP>|'${bastion}'|g' >${script_dir}/.sshconfig
+    cat $template | sed -e 's|<REPLACE_YOUR_BASTION_IP>|'${bastion}'|g' \
+        -e 's|<REPLACE_YOUR_SERVER1_IP>|'${servers[0]:-REPLACE_YOUR_SERVER1_IP}'|g' \
+        -e 's|<REPLACE_YOUR_SERVER2_IP>|'${servers[1]:-REPLACE_YOUR_SERVER2_IP}'|g' \
+        -e 's|<REPLACE_YOUR_SERVER3_IP>|'${servers[2]:-REPLACE_YOUR_SERVER3_IP}'|g' \
+        >${script_dir}/.sshconfig
 }
 
 main "$@"

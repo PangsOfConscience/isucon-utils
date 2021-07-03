@@ -2,12 +2,19 @@
 
 ## Usage
 
-ローカルPC
+### ローカルPC
+
+sshの設定
 
 ```shell
-git clone https://github.com/44smkn/isucon-utils.git
-cd isucon-utils/client
-./init.sh -b 1.1.1.1 -s "2.2.2.2 3.3.3.3 4.4.4.4" -p 5032
+# basic usage
+./client/init.sh -s "2.2.2.2"
+# use bastion server and use 5032 port and multiple server
+./client/init.sh -b 1.1.1.1 -s "2.2.2.2 3.3.3.3 4.4.4.4" -p 5032
+
+# サーバにssh
+alias ssh="ssh -F $(pwd)/client/.sshconfig"
+ssh s1
 ```
 
 サーバ
