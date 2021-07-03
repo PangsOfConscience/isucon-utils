@@ -24,7 +24,7 @@ sudo su - isucon
 # @isuconユーザのホームディレクトリ
 git clone https://github.com/44smkn/isucon-utils.git
 cd isucon-utils/server
-./init.sh
+./init.sh $webhook_url
 ```
 
 ## 事前準備

@@ -61,6 +61,12 @@ access_log /var/log/nginx/access.log ltsv;' | sudo tee /etc/nginx/conf.d/log_for
 }
 
 main() {
+    local webhook_url=$1
+    local -r script_dir=$(
+        cd $(dirname $0)
+        pwd
+    )
+    echo $webhook_url >${script_dir}/webhook_url.txt
     install_alp
     install_pt_query_digest
     install_graphviz
