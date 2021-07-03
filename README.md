@@ -15,6 +15,7 @@ sshの設定
 # サーバにssh
 alias ssh="ssh -F $(pwd)/client/.sshconfig"
 ssh s1
+sudo su - isucon
 ```
 
 サーバ
