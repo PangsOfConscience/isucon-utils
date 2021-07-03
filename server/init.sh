@@ -57,7 +57,6 @@ change_nginx_logformat() {
                 "\tapptime:$upstream_response_time"
                 "\tvhost:$host";
 access_log /var/log/nginx/access.log ltsv;' | sudo tee /etc/nginx/conf.d/log_format.conf >/dev/null
-    chmod 744 /etc/nginx/conf.d/log_format.conf
     echo "/etc/nginx/conf.d/log_format.conf has been created!"
 }
 
