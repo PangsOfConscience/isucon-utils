@@ -13,10 +13,10 @@ install_alp() {
 }
 
 install_with_pkgsys() {
-    local -r name=$1
+    local name=$1
 
-    local -r yum_cmd=$(which yum)
-    local -r apt_cmd=$(which apt)
+    local yum_cmd=$(which yum)
+    local apt_cmd=$(which apt)
 
     if [[ ! -z $yum_cmd ]]; then
         sudo yum install $name

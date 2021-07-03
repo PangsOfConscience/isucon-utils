@@ -21,6 +21,7 @@ sudo su - isucon
 サーバ
 
 ```shell
+# @isuconユーザのホームディレクトリ
 git clone https://github.com/44smkn/isucon-utils.git
 cd isucon-utils/server
 sh init.sh
