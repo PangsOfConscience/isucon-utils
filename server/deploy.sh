@@ -15,7 +15,7 @@ main() {
         pwd
     )
 
-    cd ${HOME}/isucari/webapp/go
+    cd /home/isucon/isucari/webapp/go
     git pull
     local -r commit_hash=$(git rev-parse --short HEAD)
     ${script_dir}/notify.sh "${user_name}: $commit_hash deploying..."
