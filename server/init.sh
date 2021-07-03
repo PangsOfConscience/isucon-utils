@@ -41,7 +41,7 @@ install_graphviz() {
 }
 
 change_nginx_logformat() {
-    sudo echo 'log_format ltsv "time:$time_local"
+    echo 'log_format ltsv "time:$time_local"
                 "\thost:$remote_addr"
                 "\tforwardedfor:$http_x_forwarded_for"
                 "\treq:$request"
@@ -56,7 +56,7 @@ change_nginx_logformat() {
                 "\truntime:$upstream_http_x_runtime"
                 "\tapptime:$upstream_response_time"
                 "\tvhost:$host";
-access_log /var/log/nginx/access.log ltsv;' >/etc/nginx/conf.d/log_format.conf
+access_log /var/log/nginx/access.log ltsv;' | sudo tee /etc/nginx/conf.d/log_format.conf >/dev/null
     chmod 744 /etc/nginx/conf.d/log_format.conf
     echo "/etc/nginx/conf.d/log_format.conf has been created!"
 }
