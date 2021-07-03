@@ -2,12 +2,12 @@
 
 Host s1
   HostName <REPLACE_YOUR_SERVER1_IP>
-  User ubuntu
+  User isucon
 
 Host s2
   HostName <REPLACE_YOUR_SERVER2_IP>
-  User ubuntu
+  User isucon
 
 Host s3
   HostName <REPLACE_YOUR_SERVER3_IP>
-  User ubuntu
+  User isucon
