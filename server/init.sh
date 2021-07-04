@@ -4,6 +4,16 @@
 
 set -eux
 
+add_auhorized_keys() {
+    local -r ssh_dir="/home/isucon/.ssh"
+    if [ ! -e $ssh_dir ]; then
+        mkdir $ssh_dir
+    fi
+    curl https://github.com/kuwata0037.keys >>$ssh_dir/authorized_keys
+    curl https://github.com/karrybit.keys >>$ssh_dir/authorized_keys
+    curl https://github.com/44smkn.keys >>$ssh_dir/authorized_keys
+}
+
 install_alp() {
     curl -sL -o alp.zip https://github.com/tkuchiki/alp/releases/download/v1.0.3/alp_linux_amd64.zip
     unzip alp.zip
@@ -67,6 +77,7 @@ main() {
         pwd
     )
     echo $webhook_url >${script_dir}/webhook_url.txt
+    add_auhorized_keys
     install_alp
     install_pt_query_digest
     install_graphviz
