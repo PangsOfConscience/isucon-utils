@@ -18,11 +18,11 @@ main() {
     cd /home/isucon/isucari/webapp/go
     git pull origin main
     local -r commit_hash=$(git rev-parse --short HEAD)
-    ${script_dir}/notify.sh "${user_name}: $commit_hash deploying..."
+    ${script_dir}/notify.sh "${user_name}: \`$commit_hash\` deploying..."
     make isucari
     sudo systemctl restart mysql
     sudo systemctl restart nginx
-    ${script_dir}/notify.sh "${user_name}: `$commit_hash` deploy done!"
+    ${script_dir}/notify.sh "${user_name}: \`$commit_hash\` deploy done!"
 }
 
 main "$@"
