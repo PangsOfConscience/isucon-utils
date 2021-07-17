@@ -12,10 +12,9 @@ sshの設定
 # use bastion server and use 5032 port and multiple server
 ./client/init.sh -b 1.1.1.1 -s "2.2.2.2 3.3.3.3 4.4.4.4" -p 5032
 
-# サーバにssh
+# サーバにssh(最初にsetupする人はubuntuのユーザで入る)
 alias ssh="ssh -F $(pwd)/client/.sshconfig"
 ssh s1
-sudo su - isucon
 ```
 
 サーバ
@@ -24,7 +23,18 @@ sudo su - isucon
 # @isuconユーザのホームディレクトリ
 git clone https://github.com/44smkn/isucon-utils.git
 cd isucon-utils/server
+webhook_url="<replca_your_webhook_url>"
 ./init.sh $webhook_url
+
+cd $HOME/isucari
+git config --global user.name "pang of conscience"
+git config --global user.email "pangofconscience@gmail.com"
+git config --global credential.helper store
+
+git init
+git remote add origin https://github.com/PangsOfConscience/isucon9-qualify.git
+git add .
+git commit -m "Initial Commmit"
 ```
 
 ## 事前準備
