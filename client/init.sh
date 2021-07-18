@@ -2,7 +2,7 @@
 #
 # ISUCON参加時にローカルPCでのセットアップを行う
 
-set -eu
+set -e
 
 echo_err() {
     echo "$1" 1>&2

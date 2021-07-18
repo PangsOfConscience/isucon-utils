@@ -15,6 +15,12 @@ sshの設定
 # サーバにssh(最初にsetupする人はubuntuのユーザで入る)
 alias ssh="ssh -F $(pwd)/client/.sshconfig"
 ssh s1
+
+# デプロイを行う
+./client/deploy.sh main
+
+# alpを回して結果をhtmlにまとめる
+./client/analyze.sh s1
 ```
 
 サーバ
@@ -30,10 +36,11 @@ cd $HOME/isucari/webapp/go
 git config --global user.name "pang of conscience"
 git config --global user.email "pangofconscience@gmail.com"
 git config --global credential.helper store
+git config --global init.defaultBranch main
 
 git init
 git remote add origin https://github.com/PangsOfConscience/isucon9-qualify.git
-git branch --set-upstream-to=origin/main master
+git branch --set-upstream-to=origin/main main
 git add .
 git commit -m "Initial Commmit"
 ```

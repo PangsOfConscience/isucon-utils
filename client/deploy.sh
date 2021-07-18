@@ -15,9 +15,11 @@ main() {
     )
 
     # 参考: https://blog.yuuk.io/entry/web-operations-isucon
-    local -r server=$1
+    local -r branch=$1
     local -r user=$USER
-    ssh -F ${script_dir}/.sshconfig $server "/home/isucon/isucon-utils/server/deploy.sh $user"
+    for server in s1; do
+        ssh -F ${script_dir}/.sshconfig $server "/home/isucon/isucon-utils/server/deploy.sh $user $branch"
+    done
 }
 
 main "$@"
