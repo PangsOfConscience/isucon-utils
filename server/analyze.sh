@@ -25,9 +25,9 @@ main() {
     EIP=$(curl -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/public-ipv4)
     ${script_dir}/notify.sh "Analysis done! Please check http://${EIP}:9091/${alp_file_name}.html and http://${EIP}:9091/${pqd_file_name}.html"
 
-    sudo cp /var/log/nginx/access.log /var/log/nginx/access_${current}.log
+    sudo cp -p /var/log/nginx/access.log /var/log/nginx/access_${current}.log
     sudo truncate /var/log/nginx/access.log --size 0
-    sudo mv /var/log/mysql/slow.log /var/log/mysql/slow_${current}.log
+    sudo cp -p /var/log/mysql/slow.log /var/log/mysql/slow_${current}.log
     sudo truncate /var/log/mysql/slow.log --size 0
 }
 
