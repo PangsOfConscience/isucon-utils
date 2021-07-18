@@ -15,7 +15,10 @@ main() {
     )
 
     # 参考: https://blog.yuuk.io/entry/web-operations-isucon
-    local -r branch=$1
+    local branch=main
+    if [ $# -gt 0 ]; then
+        branch=$1
+    fi
     local -r user=$USER
     for server in s1; do
         ssh -F ${script_dir}/.sshconfig $server "/home/isucon/isucon-utils/server/deploy.sh $user $branch"
