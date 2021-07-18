@@ -26,15 +26,38 @@ cd isucon-utils/server
 webhook_url="<replca_your_webhook_url>"
 ./init.sh $webhook_url
 
-cd $HOME/isucari
+cd $HOME/isucari/webapp/go
 git config --global user.name "pang of conscience"
 git config --global user.email "pangofconscience@gmail.com"
 git config --global credential.helper store
 
 git init
 git remote add origin https://github.com/PangsOfConscience/isucon9-qualify.git
+git branch --set-upstream-to=origin/main master
 git add .
 git commit -m "Initial Commmit"
+```
+
+nginxのルーティングルールを変更する  
+`sudo vim /etc/nginx/nginx.conf`
+
+```sh
+    server {
+        listen 80;
+
+        location / {
+            proxy_pass http://localhost:8000;
+        }
+    }
+
+    server {
+        listen 9091;
+
+        location / {
+            root /www/data;
+            index index.html;
+        }
+    }
 ```
 
 ## 事前準備
