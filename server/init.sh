@@ -70,6 +70,14 @@ access_log /var/log/nginx/access.log ltsv;' | sudo tee /etc/nginx/conf.d/log_for
     echo "/etc/nginx/conf.d/log_format.conf has been created!"
 }
 
+add_slow_query_config() {
+    echo '[mysqld]
+slow_query_log = 1
+slow_query_log_file = /var/log/mysql/slow.log
+long_query_time = 0' | sudo tee -a /etc/mysql/my.cnf >/dev/null
+    echo "add slow query config to /etc/mysql/my.cnf"
+}
+
 main() {
     local webhook_url=$1
     local -r script_dir=$(
@@ -82,6 +90,7 @@ main() {
     install_pt_query_digest
     install_graphviz
     change_nginx_logformat
+    add_slow_query_config
 }
 
 main "$@"

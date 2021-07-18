@@ -20,6 +20,8 @@ main() {
     TOKEN=$(curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600")
     EIP=$(curl -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/public-ipv4)
     ${script_dir}/notify.sh "Analysis done! Please check http://${EIP}:9091/${alp_file_name}.html"
+
+    mv /var/log/nginx/access.log /var/log/nginx/access_${current}.log
 }
 
 main "$@"
