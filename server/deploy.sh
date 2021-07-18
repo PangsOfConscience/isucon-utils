@@ -26,7 +26,7 @@ main() {
     make isucari
     sudo systemctl restart mysql
     sudo systemctl restart nginx
-    ${script_dir}/notify.sh "${user_name}: deploy done!\`\`\`target_branch: $branch\n$commit_hash\n$commit_message\`\`\`"
+    ${script_dir}/notify.sh "${user_name}: deploy done!\`\`\`target_branch: $branch\n$commit_hash\n$commit_message\`\`\`"
 }
 
 main "$@"
