@@ -11,7 +11,9 @@ main() {
     current=$(date +"%H-%M-%S")
     alp_file_name="alp-${user}-${current}"
 
-    sudo mkdir -p /www/data/logs
+    sudo mkdir -p /www/data
+    sudo chmod 777 /www/data
+    sudo chmod 777 /var/log/nginx/access.log
     echo "<html><body><pre style=\"font-family: 'Courier New', Consolas\">" >/www/data/${alp_file_name}.html
     cat /var/log/nginx/access.log | alp ltsv ${alp_command_opts} >>/www/data/${alp_file_name}.html
 
