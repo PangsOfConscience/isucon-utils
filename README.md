@@ -32,7 +32,7 @@ cd isucon-utils/server
 webhook_url="<replca_your_webhook_url>"
 ./init.sh $webhook_url
 
-cd $HOME/isucari/webapp/go
+cd $HOME/isuumo/webapp/go
 git config --global user.name "pang of conscience"
 git config --global user.email "pangofconscience@gmail.com"
 git config --global credential.helper store
