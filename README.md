@@ -39,10 +39,11 @@ git config --global credential.helper store
 git config --global init.defaultBranch main
 
 git init
-git remote add origin https://github.com/PangsOfConscience/isucon9-qualify.git
-git branch --set-upstream-to=origin/main main
+git remote add origin https://github.com/PangsOfConscience/isucon10-qualify.git
 git add .
 git commit -m "Initial Commmit"
+git branch -M main
+git push -u origin main
 ```
 
 nginxのルーティングルールを変更する  
@@ -53,7 +54,7 @@ nginxのルーティングルールを変更する
         listen 80;
 
         location / {
-            proxy_pass http://localhost:8000;
+            proxy_pass http://localhost:1323;
         }
     }
 
