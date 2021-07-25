@@ -16,7 +16,7 @@ main() {
         pwd
     )
 
-    source $HOME/.bash_profile # READ Environment Variable
+    source $HOME/.bash_profile || true # READ Environment Variable
     cd /home/isucon/isuumo/webapp/go
     git checkout -B $branch origin/$branch
     git pull
