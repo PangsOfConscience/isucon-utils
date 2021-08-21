@@ -20,7 +20,7 @@ main() {
         branch=$1
     fi
     local -r user=$USER
-    for server in s1; do
+    for server in s1 s3; do
         ssh -F ${script_dir}/.sshconfig $server "/home/isucon/isucon-utils/server/deploy.sh $user $branch"
     done
 }
