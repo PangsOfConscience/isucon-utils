@@ -24,7 +24,7 @@ main() {
     local -r commit_hash=$(git rev-parse --short HEAD)
     local -r commit_message=$(git log -1 --pretty='%s')
     ${script_dir}/notify.sh "${user_name}: deploying...\n\`\`\`target_branch: $branch\n$commit_hash\n$commit_message\`\`\`"
-    go build -o isucondition
+    /home/isucon/local/go/bin/go build -o isucondition
     sudo systemctl restart isucondition.go.service
     sudo systemctl restart mysql
     sudo systemctl restart nginx
